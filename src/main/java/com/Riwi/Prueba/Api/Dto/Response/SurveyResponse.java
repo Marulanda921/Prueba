@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -15,8 +16,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SurveyResponse {
+    private int id;
     private String title;
-    private LocalDateTime creationDate;
+    private Date creationDate;
     private State state;
-    private List<UserResponse> userResponses;
+    private int UserId;
+
 }

@@ -24,11 +24,10 @@ import java.util.List;
 public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(min = 0, max = 11)
     private int id;
     private String title;
     private String description;
-    private LocalDateTime creationDate;
+    private Date creationDate;
     @Enumerated(EnumType.STRING)
     private State state;
 

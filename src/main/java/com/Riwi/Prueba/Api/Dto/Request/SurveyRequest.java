@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Data
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 public class SurveyRequest {
     @NotBlank(message = "el titulo es requerido")
     private String title;
-    @NotBlank(message = "la estructura debe ser yyyy-mm-dd")
-    private LocalDateTime creationDate;
+    private Date creationDate;
     private State state;
+    private int UserId;
 }

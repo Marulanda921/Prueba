@@ -19,10 +19,8 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(min = 0, max = 11)
     private int id;
     private String text;
-
     private String type;
     private State state;
 
