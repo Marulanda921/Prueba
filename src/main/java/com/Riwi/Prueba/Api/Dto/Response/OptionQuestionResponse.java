@@ -1,5 +1,6 @@
 package com.Riwi.Prueba.Api.Dto.Response;
 
+import com.Riwi.Prueba.Utils.Enums.NoticeState;
 import com.Riwi.Prueba.Utils.Enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,5 +15,6 @@ import lombok.NoArgsConstructor;
 public class OptionQuestionResponse {
     private int id;
     private String text;
-    private State state;
+    private NoticeState noticeState;
+
 }

@@ -54,7 +54,7 @@ public class OptionQuestionService implements IoptionQuestion {
         return OptionQuestionResponse.builder()
                 .id(optionQuestion.getId())
                 .text(optionQuestion.getText())
-                .state(optionQuestion.getState())
+                .noticeState(optionQuestion.getNoticeState())
                 .build();
     }
 

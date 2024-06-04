@@ -8,6 +8,7 @@ import com.Riwi.Prueba.Domain.Entity.Survey;
 import com.Riwi.Prueba.Domain.Entity.User;
 import com.Riwi.Prueba.Domain.Repository.SurveyRepository;
 import com.Riwi.Prueba.Domain.Repository.UserRepository;
+import com.Riwi.Prueba.Infraestructure.Helpers.EmailHelper;
 import com.Riwi.Prueba.Infraestructure.ISurveyService;
 import com.Riwi.Prueba.Utils.Exception.BadRequestException;
 import com.Riwi.Prueba.Utils.Messages.ErrorMessages;
@@ -17,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -31,12 +34,16 @@ public class SurveyService implements ISurveyService {
     @Autowired
     private final ModelMapper modelMapper;
 
+    @Autowired
+    private final EmailHelper emailHelper;
+
 
     @Override
     public SurveyResponse create(SurveyRequest request) {
         Survey survey = requestToEntity(request);
         Survey savedSurvey = surveyRepository.save(survey);
         return entityToResponse(savedSurvey);
+
     }
 
     @Override
@@ -86,6 +93,15 @@ public class SurveyService implements ISurveyService {
     private Survey requestToEntity(SurveyRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new BadRequestException("survey no encontrado"));
+/*
+        User user1 = this.userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new BadRequestException(ErrorMessages.idNotFound("client")));
+
+        if (Objects.nonNull(user1.getEmail())) {
+            this.emailHelper.sendMail(user1.getEmail());
+        }
+        */
+
 
         return Survey.builder()
                 .title(request.getTitle())
