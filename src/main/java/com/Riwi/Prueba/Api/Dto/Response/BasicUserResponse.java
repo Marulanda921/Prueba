@@ -1,18 +1,18 @@
-package com.Riwi.Prueba.Api.Dto.Request;
+package com.Riwi.Prueba.Api.Dto.Response;
 
-import com.Riwi.Prueba.Utils.Enums.Options;
 import com.Riwi.Prueba.Utils.Enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionRequest {
-    private String text;
-    private String type;
-    private Options opciones;
+public class BasicUserResponse {
+        private String name;
+        private String email;
+        private State state;
 }

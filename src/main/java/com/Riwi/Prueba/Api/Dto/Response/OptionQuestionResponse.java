@@ -1,18 +1,18 @@
-package com.Riwi.Prueba.Api.Dto.Request;
+package com.Riwi.Prueba.Api.Dto.Response;
 
-import com.Riwi.Prueba.Utils.Enums.Options;
 import com.Riwi.Prueba.Utils.Enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionRequest {
+@Builder
+public class OptionQuestionResponse {
+    private int id;
     private String text;
-    private String type;
-    private Options opciones;
+    private State state;
 }

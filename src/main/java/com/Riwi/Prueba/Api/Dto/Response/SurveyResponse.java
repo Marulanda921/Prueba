@@ -20,6 +20,5 @@ public class SurveyResponse {
     private String title;
     private Date creationDate;
     private State state;
-    private int UserId;
-
+    private BasicUserResponse basicUserResponse;
 }

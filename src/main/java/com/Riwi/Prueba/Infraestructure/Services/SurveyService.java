@@ -2,6 +2,7 @@ package com.Riwi.Prueba.Infraestructure.Services;
 
 
 import com.Riwi.Prueba.Api.Dto.Request.SurveyRequest;
+import com.Riwi.Prueba.Api.Dto.Response.BasicUserResponse;
 import com.Riwi.Prueba.Api.Dto.Response.SurveyResponse;
 import com.Riwi.Prueba.Domain.Entity.Survey;
 import com.Riwi.Prueba.Domain.Entity.User;
@@ -65,18 +66,26 @@ public class SurveyService implements ISurveyService {
 
 
     public SurveyResponse entityToResponse(Survey survey) {
+
+        BasicUserResponse userResponse = BasicUserResponse.builder()
+                .email(survey.getUser().getEmail())
+                .name(survey.getUser().getName())
+                .state(survey.getUser().getState())
+                .build();
+
+
         return SurveyResponse.builder()
                 .id(survey.getId())
                 .title(survey.getTitle())
                 .creationDate(survey.getCreationDate())
                 .state(survey.getState())
-                .UserId(survey.getUser().getId())
+                .basicUserResponse(userResponse)
                 .build();
     }
 
     private Survey requestToEntity(SurveyRequest request) {
         User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new BadRequestException("User no encontrado"));
+                .orElseThrow(() -> new BadRequestException("survey no encontrado"));
 
         return Survey.builder()
                 .title(request.getTitle())
